@@ -1,8 +1,9 @@
+// schemas/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class User extends Document { //hydrated document , DTO , input validation
+export class User extends Document {
   @Prop({ required: true })
   firstName: string;
 
@@ -17,6 +18,9 @@ export class User extends Document { //hydrated document , DTO , input validatio
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ default: 'user' })
+  role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
